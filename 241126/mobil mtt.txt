@@ -1,0 +1,22 @@
+ Scanner oku=new Scanner(System.in);
+        System.out.println("Miktarı Girin");
+        Double miktar= oku.nextDouble();
+        double sonuc= oku.nextDouble();
+
+        if (miktar>0 && miktar<200){
+            sonuc=miktar*2;
+        }
+        else if (miktar>200&& miktar<300) {
+            sonuc=miktar*2.5;
+
+        }
+        else if (miktar>300 && miktar<400) {
+            sonuc=miktar*4;
+
+        }
+
+    }
+    public static double farkHesapla(miktar){
+
+    }
+}
