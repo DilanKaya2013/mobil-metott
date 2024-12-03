@@ -1,0 +1,19 @@
+Button btnTikla;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+
+        btnTikla=findViewById(R.id.button_Tikla);
+
+
+        btnTikla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText( MainActivity.this, "Merhaba Dünya", Toast.LENGTH_SHORT).show();
+            }
+
+            });

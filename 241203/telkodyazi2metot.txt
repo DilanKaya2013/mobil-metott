@@ -1,0 +1,31 @@
+Button btnTikla;
+EditText etad;
+TextView tvmesaj;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+
+        btnTikla=findViewById(R.id.button_tikla);
+        etad=findViewById(R.id.editText_ad);
+        tvmesaj=findViewById(R.id.TextView_mesaj);
+        btnTikla.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                String ad=etad.getText().toString();
+                Toast.makeText(MainActivity.this, "Hoşgeldin ", Toast.LENGTH_SHORT).show();
+                tvmesaj.setText("Hoşgeldin"+ad);
+
+              mesajver(ad);
+            }
+            private void mesajver( String ad) {
+                Toast.makeText(MainActivity.this, "Hoşgeldin "+ad, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+}
