@@ -1,0 +1,30 @@
+ ImageView imageViewHayvan;
+    RadioButton radioButtonKedi,radioButtonKopek,radioButtonTilki;
+    Button buttonSec;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        imageViewHayvan=findViewById(R.id.imageView_hayvan);
+        radioButtonKedi=findViewById(R.id.radioButton_kedi);
+        radioButtonKopek=findViewById(R.id.radioButton_kopek);
+        radioButtonTilki=findViewById(R.id.radioButton_tilki);
+        buttonSec=findViewById(R.id.button_sec);
+        buttonSec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(radioButtonKedi.isChecked()){
+                    imageViewHayvan.setImageResource(R.drawable.cat);
+                }
+                else if(radioButtonKopek.isChecked()){
+                    imageViewHayvan.setImageResource(R.drawable.dog);
+                }
+                else{
+                    imageViewHayvan.setImageResource(R.drawable.fox);
+                }
+
+            }
+        });
+    }
+}

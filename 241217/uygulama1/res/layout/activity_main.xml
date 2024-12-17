@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/editTextNumber_sayi1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="25dp"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editTextNumber_sayi2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="10dp"
+        android:inputType="number" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radioButton_topla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Topla" />
+
+        <RadioButton
+            android:id="@+id/radioButton_cikar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Çıkar" />
+
+        <RadioButton
+            android:id="@+id/radioButton_carp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Çarp" />
+
+        <RadioButton
+            android:id="@+id/radioButton_bol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Böl" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_hesapla"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Hesapla" />
+
+    <TextView
+        android:id="@+id/textView_sonuc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Sonuç:"
+        android:textAlignment="center"
+        android:textSize="25sp" />
+</LinearLayout>
