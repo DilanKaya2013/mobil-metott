@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button_calistir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Çalıştır" />
+
+    <Button
+        android:id="@+id/button7_Hizlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hızlan" />
+
+    <Button
+        android:id="@+id/button8_Yavasla"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Yavaşla" />
+
+    <Button
+        android:id="@+id/button9_Durdur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Durdur" />
+
+    <TextView
+        android:id="@+id/textViewDurum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+</LinearLayout>
