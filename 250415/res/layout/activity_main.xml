@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="15dp"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/et_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="id"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/et_ad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Ürün Adı Giriniz..."
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/et_Fiyat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Ürün Fiyat Giriniz..."
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/et_stokMiktar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Ürün Stok Giriniz..."
+        android:inputType="text" />
+
+    <Switch
+        android:id="@+id/switch_stok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ürün Mevcut mu?" />
+
+    <Button
+        android:id="@+id/btn_gonder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gönder" />
+</LinearLayout>
