@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Uygulama1</string>
+    <string name="tr_aciklama">trAciklama</string>
+    <string name="al_aciklama">alAciklama</string>
+    <string name="bl_aciklama">blAciklama</string>
+    <string name="kn_aciklama">knAciklama</string>
+</resources>
