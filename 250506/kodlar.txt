@@ -1,0 +1,342 @@
+
+MainActivity.java
+
+package com.example.uygulama1;
+
+import android.os.Bundle;
+import android.widget.ListView;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+
+    ListView lvUlkeler;
+    ArrayList<Ulke>liste;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
+        lvUlkeler=findViewById(R.id.lv_ulkeler);
+
+        liste=new ArrayList<>();
+        liste.add(new Ulke(R.drawable.danimarka,"Danimarka","Kopenhag",123456789,getString(R.string.aciklama_danimarka)));
+        liste.add(new Ulke(R.drawable.brezilya,"Brezilya","Brüksel",123456789,getString(R.string.aciklama_brezilya)));
+        liste.add(new Ulke(R.drawable.kanada,"Kanada","Ottava",123456789,getString(R.string.aciklama_kanada)));
+        liste.add(new Ulke(R.drawable.somali,"Somali","Mogadişu",123456789,getString(R.string.aciklama_somali)));
+
+        UlkeAdapter adapter=new UlkeAdapter(this,liste);
+        lvUlkeler.setAdapter(adapter);
+
+    }
+}
+
+
+Ulke.java
+
+package com.example.uygulama1;
+
+import java.io.Serializable;
+
+public class Ulke implements Serializable {
+    int bayrak;
+    String ad;
+    String baskent;
+    int nufus;
+
+    String aciklama;
+
+    public Ulke(int bayrak, String ad, String baskent, int nufus, String aciklama) {
+        this.bayrak = bayrak;
+        this.ad = ad;
+        this.baskent = baskent;
+        this.nufus = nufus;
+        this.aciklama = aciklama;
+    }
+
+    public int getBayrak() {
+        return bayrak;
+    }
+
+    public void setBayrak(int bayrak) {
+        this.bayrak = bayrak;
+    }
+
+    public String getAd() {
+        return ad;
+    }
+
+    public void setAd(String ad) {
+        this.ad = ad;
+    }
+
+    public String getBaskent() {
+        return baskent;
+    }
+
+    public void setBaskent(String baskent) {
+        this.baskent = baskent;
+    }
+
+    public int getNufus() {
+        return nufus;
+    }
+
+    public void setNufus(int nufus) {
+        this.nufus = nufus;
+    }
+
+    public String getAciklama() {
+        return aciklama;
+    }
+
+    public void setAciklama(String aciklama) {
+        this.aciklama = aciklama;
+    }
+}
+
+
+
+
+
+UlkeAdapter.java
+
+package com.example.uygulama1;
+
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+public class UlkeAdapter extends BaseAdapter {
+
+    Context context;
+
+    ArrayList<Ulke> ulkeler;
+
+    public UlkeAdapter(Context context, ArrayList<Ulke> ulkeler) {
+        this.context = context;
+        this.ulkeler = ulkeler;
+    }
+
+    @Override
+    public int getCount() {
+        return ulkeler.size();
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return ulkeler.get(i);
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) { //liste gürünümü olusturulur.
+
+        ImageView ivSatirBayrak;
+        TextView tvSatirAd,tvSatirBaskent,tvSatirNufus;
+        Ulke ulke=ulkeler.get(i); //Sıradaki ülke nesnesi elde edilir.
+        if (view == null){
+            view=View.inflate(context,R.layout.satir,null);
+        }
+
+        //xml'de tanımlı bileşenler ayarlanır.
+        ivSatirBayrak=view.findViewById(R.id.Iv_satir_bayrak);
+        tvSatirAd=view.findViewById(R.id.tv_satir_ad);
+        tvSatirBaskent=view.findViewById(R.id.tv_satir_baskent);
+        tvSatirNufus=view.findViewById(R.id.tv_satir_nufus);
+
+        //Her bilesene ülke nesnesinden alınan değer atanır.
+        ivSatirBayrak.setImageResource(ulke.getBayrak());
+        tvSatirAd.setText(ulke.getAd());
+        tvSatirBaskent.setText(ulke.getBaskent());
+        tvSatirNufus.setText("Nüfus :"+ulke.getNufus());
+
+
+        return view;
+    }
+
+
+}
+
+
+
+activity_detail.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/ıv_bayrak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_gravity="center_horizontal"
+                app:srcCompat="@drawable/danimarka" />
+
+            <TextView
+                android:id="@+id/tv_ad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Ülke"
+                android:textSize="24sp"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_acıklama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Ülke Açıklaması"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+activity.main
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ListView
+        android:id="@+id/lv_ulkeler"
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp" />
+</LinearLayout>
+
+
+
+
+satir.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/Iv_satir_bayrak"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/danimarka" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="2"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_satir_ad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ülke Adı"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_satir_baskent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:text="Başkent" />
+
+        <TextView
+            android:id="@+id/tv_satir_nufus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nüfus" />
+    </LinearLayout>
+</LinearLayout>
+
+
+
+DetailActivity.java
+
+package com.example.uygulama1;
+
+import android.os.Bundle;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class DetailActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_detail);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+    }
+}
+
+
+
+
+
